@@ -1,0 +1,58 @@
+﻿@model FujitsuFinal.Models.Document
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Document</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.documentTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.documentTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.documentExtension)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.documentExtension)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.documentPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.documentPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.documentSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.documentSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.documentUploadedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.documentUploadedAt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.documentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

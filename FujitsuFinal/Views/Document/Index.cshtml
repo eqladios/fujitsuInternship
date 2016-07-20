@@ -1,0 +1,106 @@
+﻿
+@model IEnumerable<FujitsuFinal.Models.Document>
+
+@{
+    ViewBag.Title = "Documents List";
+}
+
+<h2>Documents List</h2>
+
+<table class="table" id="mainTable">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Extension
+            </th>
+            <th>
+                Size
+            </th>
+            <th>
+                Uploaded At
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a class="previewLink" href="https://view.officeapps.live.com/op/embed.aspx?src=App_Data/uploads/@item.documentTitle">@item.documentTitle</a><div class="box"><iframe src='https://view.officeapps.live.com/op/embed.aspx?src=App_Data/uploads/@item.documentTitle' width='500px' height='550px' frameborder='0'></iframe></div>
+                    @*@Html.DisplayFor(modelItem => item.documentTitle)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.documentExtension)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.documentSize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.documentUploadedAt)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id=item.documentID }) |*@
+                    @*@Html.ActionLink("Details", "Details", new { id=item.documentID }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.documentID })
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+@using (Html.BeginForm("Create", "Document", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="file" name="file" multiple="multiple" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-0 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@*<script>
+    $(document).ready(function () {
+
+        $("#delete").click(function ()
+        {
+            var selectedIDs = new Array();
+            $('input:checkbox.checkBox').each(function ()
+            {
+                if ($(this).prop('checked'))
+                {
+                    selectedIDs.push($(this).val());
+                }
+        });
+
+        var options = {};
+        options.url = "/Document/Delete";
+        options.type = "POST";
+        options.data = JSON.stringify(selectedIDs);
+        //alert(options.data);
+        options.contentType = "application/json";
+        options.dataType = "json";
+        $.ajax(options);
+        $.post(options.url,)
+
+    });
+    });
+</script>*@
+
