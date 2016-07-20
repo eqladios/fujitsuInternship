@@ -58,7 +58,7 @@ namespace FujitsuFinal.Controllers
                         {
                             documentTitle = fileName,
                             documentExtension = Path.GetExtension(fileName),
-                            documentPath = Path.Combine(Server.MapPath("/App_Data/uploads/"), fileName),
+                            documentPath = Path.Combine(Server.MapPath("~/App_Data/"), fileName),
                             documentUploadedAt = DateTime.Now,
                         };
                         file.SaveAs(newDocument.documentPath);
